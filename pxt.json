@@ -12,7 +12,8 @@
         "blynk.ts",
         "sntp.ts",
         "telegram.ts",
-        "thingspeak.ts"
+        "thingspeak.ts",
+        "lambizsoft.ts"
     ],
     "testFiles": [
         "test.ts"
