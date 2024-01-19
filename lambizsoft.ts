@@ -1,59 +1,59 @@
 /*******************************************************************************
- * Functions for Telegram
+ * Functions for lambizsoft
  *
  * Company: Cytron Technologies Sdn Bhd
  * Website: http://www.cytron.io
  * Email:   support@cytron.io
  *******************************************************************************/
 
-// Telegram API url.
-const TELEGRAM_API_URL = "http://45.118.134.212"
+// lambizsoft API url.
+const lambizsoft_API_URL = "http://45.118.134.212"
 
 namespace esp8266 {
-    // Flag to indicate whether the Telegram message was sent successfully.
-    let telegramMessageSent = false
+    // Flag to indicate whether the lambizsoft message was sent successfully.
+    let lambizsoftMessageSent = false
 
 
 
     /**
-     * Return true if the Telegram message was sent successfully.
+     * Return true if the lambizsoft message was sent successfully.
      */
-    //% subcategory="Telegram"
+    //% subcategory="lambizsoft"
     //% weight=30
     //% blockGap=8
-    //% blockId=esp8266_is_telegram_message_sent
-    //% block="Telegram message sent"
-    export function isTelegramMessageSent(): boolean {
-        return telegramMessageSent
+    //% blockId=esp8266_is_lambizsoft_message_sent
+    //% block="lambizsoft message sent"
+    export function islambizsoftMessageSent(): boolean {
+        return lambizsoftMessageSent
     }
 
 
 
     /**
-     * Send Telegram message.
-     * @param apiKey Telegram API Key.
+     * Send lambizsoft message.
+     * @param apiKey lambizsoft API Key.
      * @param chatId The chat ID we want to send message to.
      */
-    //% subcategory="Telegram"
+    //% subcategory="lambizsoft"
     //% weight=29
     //% blockGap=8
-    //% blockId=esp8266_send_telegram_message
-    //% block="send message to Telegram:|API Key %apiKey|Chat ID %chatId|Message %message"
-    export function sendTelegramMessage(apiKey: string, chatId: string, message: string) {
+    //% blockId=esp8266_send_lambizsoft_message
+    //% block="send message to lambizsoft:|API Key %apiKey|Chat ID %chatId|Message %message"
+    export function sendlambizsoftMessage(apiKey: string, chatId: string, message: string) {
 
         // Reset the upload successful flag.
-        telegramMessageSent = false
+        lambizsoftMessageSent = false
 
         // Make sure the WiFi is connected.
         if (isWifiConnected() == false) return
 
-        // Connect to Telegram. Return if failed.
-        if (sendCommand("AT+CIPSTART=\"SSL\",\"" + TELEGRAM_API_URL + "\",8080", "OK", 10000) == false) return
+        // Connect to lambizsoft. Return if failed.
+        if (sendCommand("AT+CIPSTART=\"SSL\",\"" + lambizsoft_API_URL + "\",8080", "OK", 10000) == false) return
 
         // Construct the data to send.
         let data = "GET /" + formatUrl(apiKey) + "/hi?name=" + formatUrl(chatId) + "&value=" + formatUrl(message)
         data += " HTTP/1.1\r\n"
-        data += "Host: " + TELEGRAM_API_URL + "\r\n"
+        data += "Host: " + lambizsoft_API_URL + "\r\n"
 
         // Send the data.
         sendCommand("AT+CIPSEND=" + (data.length + 2))
@@ -66,7 +66,7 @@ namespace esp8266 {
             return
         }
 
-        // Validate the response from Telegram.
+        // Validate the response from lambizsoft.
         let response = getResponse("\"ok\":true", 1000)
         if (response == "") {
             // Close the connection and return.
@@ -78,7 +78,7 @@ namespace esp8266 {
         sendCommand("AT+CIPCLOSE", "OK", 1000)
 
         // Set the upload successful flag and return.
-        telegramMessageSent = true
+        lambizsoftMessageSent = true
         return
     }
 
