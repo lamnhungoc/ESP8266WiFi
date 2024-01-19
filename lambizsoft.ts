@@ -7,7 +7,7 @@
  *******************************************************************************/
 
 // lambizsoft API url.
-const lambizsoft_API_URL = "http://45.118.134.212"
+const LAMBIZSOFT_API_URL = "http://45.118.134.212"
 
 namespace esp8266 {
     // Flag to indicate whether the lambizsoft message was sent successfully.
@@ -48,12 +48,12 @@ namespace esp8266 {
         if (isWifiConnected() == false) return
 
         // Connect to lambizsoft. Return if failed.
-        if (sendCommand("AT+CIPSTART=\"SSL\",\"" + lambizsoft_API_URL + "\",8080", "OK", 10000) == false) return
+        if (sendCommand("AT+CIPSTART=\"SSL\",\"" + LAMBIZSOFT_API_URL + "\",8080", "OK", 10000) == false) return
 
         // Construct the data to send.
         let data = "GET /" + formatUrl(apiKey) + "/hi?name=" + formatUrl(chatId) + "&value=" + formatUrl(message)
         data += " HTTP/1.1\r\n"
-        data += "Host: " + lambizsoft_API_URL + "\r\n"
+        data += "Host: " + LAMBIZSOFT_API_URL + "\r\n"
 
         // Send the data.
         sendCommand("AT+CIPSEND=" + (data.length + 2))
