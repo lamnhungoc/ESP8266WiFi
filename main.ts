@@ -1,11 +1,10 @@
 /*******************************************************************************
- * MakeCode extension for ESP8266 Wifi module.
+ * Functions for GoFSe
  *
- * Company: Cytron Technologies Sdn Bhd
- * Website: http://www.cytron.io
- * Email:   support@cytron.io
+ * Company: GoFSE
+ * Website: http://www.gof.com
+ * Phone:   0767.666.299
  *******************************************************************************/
-
 /**
  * Blocks for ESP8266 WiFi module.
  */
