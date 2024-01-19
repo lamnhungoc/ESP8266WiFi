@@ -21,7 +21,7 @@ namespace esp8266 {
     //% subcategory="lambizsoft"
     //% weight=30
     //% blockGap=8
-    //% blockId=esp8266_is_lambizsoft_message_sent
+    //% blockId=esp8266_is_lambizsoft_tests_sent
     //% block="lambizsoft test sent"
     export function islambizsoftMessageSent(): boolean {
         return lambizsoftMessageSent
