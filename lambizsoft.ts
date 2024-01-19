@@ -48,7 +48,7 @@ namespace esp8266 {
         if (isWifiConnected() == false) return
 
         // Connect to lambizsoft. Return if failed.
-        if (sendCommand("AT+CIPSTART=\"SSL\",\"" + LAMBIZSOFT_API_URL + "\",8080", "OK", 10000) == false) return
+        if (sendCommand("AT+CIPSTART=\"TCP\",\"" + LAMBIZSOFT_API_URL + "\",8080", "OK", 10000) == false) return
 
         // Construct the data to send.
         let data = "GET /" + formatUrl(apiKey) + "/hi?name=" + formatUrl(chatId) + "&value=" + formatUrl(message)
