@@ -39,7 +39,7 @@ namespace esp8266 {
     //% blockGap=8
     //% blockId=esp8266_send_lambizsoft_message
     //% block="send message to lambizsoft:|API Key %apiKey|Chat ID %chatId|Message %message"
-    export function sendlambizsoftMessage(apiKey: string, chatId: string, message: string) {
+    export function sendlambizsoftMessage(apiKey: string, chatId: string, message: number) {
 
         // Reset the upload successful flag.
         lambizsoftMessageSent = false
@@ -51,7 +51,7 @@ namespace esp8266 {
         if (sendCommand("AT+CIPSTART=\"TCP\",\"" + LAMBIZSOFT_API_URL + "\",8080", "OK", 10000) == false) return
 
         // Construct the data to send.
-        let data = "GET /hi?name=" + formatUrl(chatId) + "&value=" + formatUrl(message)
+        let data = "GET /hi?name=" + formatUrl(chatId) + "&value=" + message
         data += " HTTP/1.1\r\n"
         data += "Host: " + LAMBIZSOFT_API_URL + "\r\n"
 
